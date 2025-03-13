@@ -18,4 +18,4 @@ steps:
 images:
   - gcr.io/$morning-batch-449809/amazingapp:$COMMIT_SHA
   
-  logsBucket:  "gs://1052417347751-global-cloudbuild-logs"
+logsBucket:  "gs://1052417347751-global-cloudbuild-logs"
