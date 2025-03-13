@@ -1,21 +1,20 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$morning-batch-449809/amazingapp:$COMMIT_SHA', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/amazingapp:$COMMIT_SHA', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$morning-batch-449809/amazingapp:$COMMIT_SHA']
+    args: ['push', 'gcr.io/$PROJECT_ID/amazingapp:$COMMIT_SHA']
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
     - 'run'
     - 'deploy'
     - 'amazingapp'
     - '--image'
-    - 'gcr.io/$morning-batch-449809/amazingapp:$COMMIT_SHA'
+    - 'gcr.io/$PROJECT_ID/amazingapp:$COMMIT_SHA'
     - '--region'
     - 'us-east1'
     - '--platform'
     - 'managed'
     - '--allow-unauthenticated'
 images:
-  - gcr.io/$morning-batch-449809/amazingapp:$COMMIT_SHA
-  
+  - gcr.io/$PROJECT_ID/amazingapp:$COMMIT_SHA
 logsBucket:  "gs://1052417347751-global-cloudbuild-logs"
