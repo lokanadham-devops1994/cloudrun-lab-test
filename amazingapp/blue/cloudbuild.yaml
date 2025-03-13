@@ -17,4 +17,4 @@ steps:
     - '--allow-unauthenticated'
 images:
   - gcr.io/$PROJECT_ID/amazingapp:$COMMIT_SHA
-logsBucket:  "gs://1052417347751-global-cloudbuild-logs"
+logsBucket: "gs://1052417347751-global-cloudbuild-logs"
