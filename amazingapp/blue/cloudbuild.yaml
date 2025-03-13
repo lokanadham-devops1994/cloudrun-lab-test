@@ -42,4 +42,4 @@ steps:
 images:
   - us-docker.pkg.dev/$PROJECT_ID/amazingapp-repo/amazingapp:$COMMIT_SHA
 
-logsBucket: "gs://lokanadhamlogs-storage-bucket"
+logsBucket: 'gs://lokanadhamlogs-storage-bucket'
