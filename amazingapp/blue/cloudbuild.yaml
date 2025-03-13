@@ -10,7 +10,11 @@ steps:
 
   # Step 2: Authenticate Docker with Artifact Registry
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['auth', 'configure-docker', 'us-docker.pkg.dev']
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud auth configure-docker us-docker.pkg.dev
 
   # Step 3: Build Docker image using blue/ as the context
   - name: 'gcr.io/cloud-builders/docker'
