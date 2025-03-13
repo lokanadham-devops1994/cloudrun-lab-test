@@ -10,15 +10,18 @@ steps:
 
   # Step 2: Authenticate Docker with Artifact Registry
   - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        gcloud auth configure-docker us-docker.pkg.dev
+    args: ['auth', 'configure-docker', 'us-docker.pkg.dev']
 
   # Step 3: Build Docker image using blue/ as the context
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build','-t', 'us-docker.pkg.dev/$PROJECT_ID/amazingapp-repo/amazingapp:$COMMIT_SHA','./amazingapp/blue','-f', 'amazingapp/blue/Dockerfile','amazingapp/blue' ]
+    args:
+      - 'build'
+      - '-t'
+      - 'us-docker.pkg.dev/$PROJECT_ID/amazingapp-repo/amazingapp:$COMMIT_SHA'
+      - '-f'
+      - 'amazingapp/blue/Dockerfile'
+      - '.'  # Correct build context
+    dir: 'amazingapp/blue'  # Ensure we're inside the correct directory
 
   # Step 4: Push Docker image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
