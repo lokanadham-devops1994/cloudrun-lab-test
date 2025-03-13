@@ -12,13 +12,13 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['auth', 'configure-docker', 'us-docker.pkg.dev']
 
-  # Step 3: Build Docker image using blue/ as the context
+  # Step 3: Build Docker image using green/ as the context
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'build',
       '-t', 'us-docker.pkg.dev/$PROJECT_ID/amazingapp-repo/amazingapp:$COMMIT_SHA',
-      '-f', 'amazingapp/blue/Dockerfile',
-      'amazingapp/blue'
+      '-f', 'amazingapp/green/Dockerfile',
+      'amazingapp/green'
     ]
 
   # Step 4: Push Docker image to Artifact Registry
